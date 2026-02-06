@@ -11,3 +11,59 @@ body{
   align-items:center;
   background:linear-gradient(135deg,#0d6efd,#20c997)
 }
+.calculator{
+  width:100%;
+  max-width:360px;
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25)
+}
+.screen{
+  width:100%;
+  height:70px;
+  background:#e9f2ff;
+  border-radius:12px;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:15px;
+  font-size:28px;
+  color:#0d6efd;
+  overflow:hidden
+}
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+button{
+  height:60px;
+  border:none;
+  border-radius:14px;
+  font-size:20px;
+  cursor:pointer;
+  transition:.2s
+}
+button:active{
+  transform:scale(.95)
+}
+.number{
+  background:#f8f9fa;
+  color:#0d6efd
+}
+.operator{
+  background:#ffc107;
+  color:#000
+}
+.equal{
+  background:#20c997;
+  color:white;
+  grid-column:span 2
+}
+.clear{
+  background:#0d6efd;
+  color:white;
+  grid-column:span 2
+}
