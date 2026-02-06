@@ -1,47 +1,38 @@
 const screen=document.getElementById("screen")
 const buttons=document.querySelectorAll("button")
-let current=""
-let operator=""
-let previous=""
+
+let expression=""
 
 buttons.forEach(btn=>{
   btn.onclick=()=>{
     const value=btn.innerText
 
     if(btn.classList.contains("number")){
-      if(value==="."&&current.includes("."))return
-      current+=value
-      screen.innerText=current
+      if(value==="."&&expression.split(/[\+\−×÷]/).pop().includes("."))return
+      expression+=value
+      screen.innerText=expression
     }
 
     if(btn.classList.contains("operator")){
-      if(current==="")return
-      previous=current
-      current=""
-      operator=value
+      if(expression===""||/[\+\−×÷]$/.test(expression))return
+      expression+=value
+      screen.innerText=expression
     }
 
     if(btn.classList.contains("equal")){
-      if(current===""||previous==="")return
-      let result
-      const a=parseFloat(previous)
-      const b=parseFloat(current)
-
-      if(operator==="+" )result=a+b
-      if(operator==="−")result=a-b
-      if(operator==="×")result=a*b
-      if(operator==="÷")result=b===0?"Error":a/b
-
+      if(expression==="")return
+      const result=eval(
+        expression
+          .replace(/×/g,"*")
+          .replace(/÷/g,"/")
+          .replace(/−/g,"-")
+      )
       screen.innerText=result
-      current=result.toString()
-      previous=""
-      operator=""
+      expression=result.toString()
     }
 
     if(btn.classList.contains("clear")){
-      current=""
-      previous=""
-      operator=""
+      expression=""
       screen.innerText="0"
     }
   }
