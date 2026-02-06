@@ -67,3 +67,15 @@ button:active{
   color:white;
   grid-column:span 2
 }
+@media(max-width:400px){
+  .calculator{
+    margin:15px
+  }
+  button{
+    height:55px;
+    font-size:18px
+  }
+  .screen{
+    font-size:24px
+  }
+}
